@@ -26,6 +26,8 @@ class LibraryList extends Component {
 	}
 }
 
+// If an object is returned from this method
+// then this object will show up as props to the LibraryList component
 const mapStateToProps = state => {
 	return { libraries: state.libraries };
 };

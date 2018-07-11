@@ -56,10 +56,22 @@ const styles = {
   }
 };
 
+// ownProps are the props that were passed to the component we're wrapping (which is LisItem)
+// ownProps is exactly equal to the this.props in the ListItem component
+
+// whenever application state changes, mapStateToProps function will rerun,
+// pass in a new set of props to our Component which causes our component to rerender
+
+// whenever we call an action creator, that dispatches action, reducers rerun,
+// state is recalculated, state flows into mapStateToProps,
+// new props show up inside the component, and our application is rerendered.
 const mapStateToProps = (state, ownProps) => {
   const expanded = state.selectedLibraryId === ownProps.library.id;
 
   return { expanded };
 };
 
+// 2nd argument of connect helper method (which is actions) takes all actions (one in this case)
+// and passes all to component as props
+// If we don't have mapStateToProps method then we have to pass null here.
 export default connect(mapStateToProps, actions)(ListItem);
